@@ -1,0 +1,19 @@
+{
+  "name": "task_0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "keywords": [],
+  "devDependencies": {
+    "webpack": "^5.100.2",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
+}
