@@ -1,41 +1,43 @@
-import logo from './assets/holberton-logo.jpg';
-import './App.css';
-import { getCurrentYear, getFooterCopy } from './utils';
+import { useRef } from 'react';
+import holbertonLogo from './assets/holberton-logo.jpg'
+import './App.css'
+import { getCurrentYear, getFooterCopy } from './utils'
 import Notifications from './Notifications';
 
 function App() {
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   return (
     <>
-      <div className="root-notifications">
+      <div className='root-notifications'>
         <Notifications />
       </div>
 
-      <div className="App-header">
-        <img src={logo} alt="holberton logo" className="App-logo" />
-        <h1>School dashboard</h1>
+      <div className='App-header'>
+        <img className='holberton-logo' src={holbertonLogo} alt='holberton logo' />
+        <h1>School Dashboard</h1>
       </div>
 
-      <div className="App-divider" />
-
-      <div className="App-body">
+      <div className='App-body'>
         <p>Login to access the full dashboard</p>
 
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" name="email" />
+        <form>
+          <label htmlFor='email' onClick={() => emailRef.current && emailRef.current.focus()}>Email:</label>
+          <input id='email' name='email' type='email' ref={emailRef} />
 
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" />
+          <label htmlFor='password' onClick={() => passwordRef.current && passwordRef.current.focus()}>Password:</label>
+          <input id='password' name='password' type='password' ref={passwordRef} />
 
-        <button>OK</button>
+          <button type='submit'>OK</button>
+        </form>
       </div>
 
-      <div className="App-footer">
-        <div className="App-divider" />
-        <p>Copyright {getCurrentYear()} - {getFooterCopy(true)}</p>
+      <div className='App-footer'>
+        <p>Copyright {getCurrentYear()} - {getFooterCopy()}</p>
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
