@@ -1,0 +1,14 @@
+/* task_4/dashboard/src/CourseList/CourseList.css */
+#CourseList {
+  width: 100%;
+  border: 1px solid lightgray;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#CourseList th,
+#CourseList td {
+  border: 1px solid lightgray;
+  padding: 10px;
+  text-align: left;
+}
