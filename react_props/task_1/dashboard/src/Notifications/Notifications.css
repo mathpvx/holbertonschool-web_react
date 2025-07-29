@@ -1,0 +1,22 @@
+.notifications {
+  border: dashed 2px red;
+  padding: 10px;
+  position: relative;
+}
+
+.notifications p {
+  margin: 0;
+}
+
+.notifications ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.notifications li[data-priority="default"] {
+  color: blue;
+}
+
+.notifications li[data-priority="urgent"] {
+  color: red;
+}
