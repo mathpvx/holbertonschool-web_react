@@ -1,0 +1,13 @@
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: #E1003C;
+  font-weight: bolder;
+}
+
+.App-logo {
+  height: 30vmin;
+  pointer-events: none;
+}
