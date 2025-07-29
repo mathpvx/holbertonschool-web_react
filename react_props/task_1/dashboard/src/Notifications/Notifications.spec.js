@@ -1,33 +1,32 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Notifications from '../Notifications';
+import Notifications from './Notifications';
 
 describe('Notifications component', () => {
   test('renders the notifications title', () => {
     render(<Notifications />);
-    expect(
-      screen.getByText(/here is the list of notifications/i)
-    ).toBeInTheDocument();
+    const title = screen.getByText(/here is the list of notifications/i);
+    expect(title).toBeInTheDocument();
   });
 
   test('renders a close button', () => {
     render(<Notifications />);
-    expect(
-      screen.getByRole('button', { name: /close/i })
-    ).toBeInTheDocument();
+    const closeButton = screen.getByRole('button', { name: /close/i });
+    expect(closeButton).toBeInTheDocument();
   });
 
-  test('renders three list items', () => {
+  test('renders 3 notification items', () => {
     render(<Notifications />);
-    const items = screen.getAllByRole('listitem');
-    expect(items.length).toBe(3);
+    const listItems = screen.getAllByRole('listitem');
+    expect(listItems).toHaveLength(3);
   });
 
-  test('logs "Close button has been clicked" when the button is clicked', () => {
-    console.log = jest.fn();
+  test('clicking close button logs message to console', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
     render(<Notifications />);
-    const button = screen.getByRole('button', { name: /close/i });
-    fireEvent.click(button);
-    expect(console.log).toHaveBeenCalledWith('Close button has been clicked');
+    const closeButton = screen.getByRole('button', { name: /close/i });
+    fireEvent.click(closeButton);
+    expect(consoleSpy).toHaveBeenCalledWith('Close button has been clicked');
+    consoleSpy.mockRestore();
   });
 });
