@@ -1,0 +1,11 @@
+.App-body {
+  padding: 20px;
+  flex-grow: 1;
+  gap: 5px;
+}
+
+.App-body label,
+.App-body input,
+.App-body button {
+  margin-right: 10px;
+}
