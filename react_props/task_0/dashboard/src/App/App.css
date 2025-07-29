@@ -1,43 +1,41 @@
-*{
-  font-family: sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: 75vh;
-}
-
-.App-logo {
-  height: 30vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .App-header {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  font-size: calc(10px + 2vmin);
-  color: #E1003C;
-  font-weight: bolder;
+  padding: 10px 20px;
+}
+
+.App-logo {
+  height: 50px;
+  margin-right: 20px;
+}
+
+.App-header h1 {
+  color: #e1003c;
+  font-size: 1.8em;
+  margin: 0;
+}
+
+.App-divider {
+  border-bottom: 2px solid #e1003c;
+  width: 100%;
 }
 
 .App-body {
-  padding: 20px;
-  flex-grow: 1;
-  gap: 5px;
-
+  padding: 30px 20px;
+  min-height: 400px;
+  font-size: 16px;
 }
 
-.App-body label,
-.App-body input,
-.App-body button {
-  margin-right: 10px;
-}
-
-.border{
-  border-top: 5px solid #E1003C;
-  padding: 5px 0;
+.App-footer {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9em;
+  padding: 15px 0;
+  position: relative;
+  width: 100%;
 }
