@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+
 import './App.css';
 import Notifications from '../Notifications/Notifications';
 import Header from '../Header/Header';
@@ -7,6 +8,10 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 
 class App extends Component {
+  static propTypes = {
+    logOut: PropTypes.func
+  };
+
   static defaultProps = {
     logOut: () => {}
   };
@@ -37,9 +42,5 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  logOut: PropTypes.func
-};
 
 export default App;
