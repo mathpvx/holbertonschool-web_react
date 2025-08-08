@@ -10,21 +10,9 @@ import { getLatestNotification } from "../utils/utils";
 
 function App({ isLoggedIn = false }) {
   const notificationsList = [
-    {
-      id: 1,
-      type: "default",
-      value: "New course available"
-    },
-    {
-      id: 2,
-      type: "urgent",
-      value: "New resume available"
-    },
-    {
-      id: 3,
-      type: "urgent",
-      value: getLatestNotification()
-    }
+    { id: 1, type: 'default', value: 'New course available' },
+    { id: 2, type: 'urgent', value: 'New resume available' },
+    { id: 3, type: 'urgent', value: getLatestNotification() },
   ];
 
   return (
@@ -43,7 +31,8 @@ function App({ isLoggedIn = false }) {
       )}
 
       <BodySection title="News from the School">
-        <p>Holberton School News goes here</p>
+        {}
+        <p>Holberton School news goes here</p>
       </BodySection>
 
       <Footer />
