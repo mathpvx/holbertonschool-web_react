@@ -1,56 +1,42 @@
-import { useRef, useEffect } from 'react';
+import React, { Component, useRef, useEffect } from 'react';
 
-function NotificationItem({ type = 'default', html, value }) {
-    const colors = {
-        urgent: 'red',
-        default: 'blue'
-    };
+class NotificationItem extends Component {
+  containsHTML(str) {
+    return typeof str === 'string' && /<\/?[a-z][\s\S]*>/i.test(str);
+  }
 
-    const color = colors[type];
-    const liRef = useRef(null);
-
-    useEffect(() => {
-        if (liRef.current) {
-            liRef.current.style.color = color;
-            if (!liRef.current.style._values) {
-                liRef.current.style._values = {};
-            }
-            liRef.current.style._values.color = color;
-        }
-    }, [color]);
-
-    const containsHTML = (str) => {
-        return typeof str === 'string' && /<\/?[a-z][\s\S]*>/i.test(str);
-    };
+  render() {
+    const { type = 'default', html, value, markAsRead } = this.props;
 
     if (html) {
-        return (
-            <li
-                ref={liRef}
-                data-notification-type={type}
-                dangerouslySetInnerHTML={html}
-            />
-        );
+      return (
+        <li
+          data-notification-type={type}
+          dangerouslySetInnerHTML={html}
+          onClick={markAsRead}
+        />
+      );
     }
 
-    if (value && containsHTML(value)) {
-        return (
-            <li
-                ref={liRef}
-                data-notification-type={type}
-                dangerouslySetInnerHTML={{ __html: value }}
-            />
-        );
+    if (value && this.containsHTML(value)) {
+      return (
+        <li
+          data-notification-type={type}
+          dangerouslySetInnerHTML={{ __html: value }}
+          onClick={markAsRead}
+        />
+      );
     }
 
     return (
-        <li
-            ref={liRef}
-            data-notification-type={type}
-        >
-            {value}
-        </li>
+      <li
+        data-notification-type={type}
+        onClick={markAsRead}
+      >
+        {value}
+      </li>
     );
+  }
 }
 
 export default NotificationItem;
