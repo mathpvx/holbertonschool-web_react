@@ -7,16 +7,25 @@ class NotificationItem extends Component {
   }
 
   componentDidMount() {
-    const { type } = this.props;
-    const colors = { urgent: 'red', default: 'blue' };
-    const color = colors[type] || 'blue';
+    this.updateColor();
+  }
 
+  componentDidUpdate() {
+    this.updateColor();
+  }
+
+  updateColor() {
+    const { type = 'default' } = this.props;
+    const colors = {
+      urgent: 'red',
+      default: 'blue'
+    };
     if (this.liRef.current) {
-      this.liRef.current.style.color = color;
+      this.liRef.current.style.color = colors[type];
       if (!this.liRef.current.style._values) {
         this.liRef.current.style._values = {};
       }
-      this.liRef.current.style._values.color = color;
+      this.liRef.current.style._values.color = colors[type];
     }
   }
 
@@ -25,7 +34,7 @@ class NotificationItem extends Component {
   }
 
   render() {
-    const { type = 'default', html, value, markAsRead, id } = this.props;
+    const { type = 'default', html, value, markAsRead } = this.props;
 
     if (html) {
       return (
@@ -33,7 +42,7 @@ class NotificationItem extends Component {
           ref={this.liRef}
           data-notification-type={type}
           dangerouslySetInnerHTML={html}
-          onClick={() => markAsRead(id)}
+          onClick={markAsRead}
         />
       );
     }
@@ -44,7 +53,7 @@ class NotificationItem extends Component {
           ref={this.liRef}
           data-notification-type={type}
           dangerouslySetInnerHTML={{ __html: value }}
-          onClick={() => markAsRead(id)}
+          onClick={markAsRead}
         />
       );
     }
@@ -53,7 +62,7 @@ class NotificationItem extends Component {
       <li
         ref={this.liRef}
         data-notification-type={type}
-        onClick={() => markAsRead(id)}
+        onClick={markAsRead}
       >
         {value}
       </li>

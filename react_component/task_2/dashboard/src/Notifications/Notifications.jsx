@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import './Notifications.css';
 import NotificationItem from './NotificationItem';
-import closeButton from "../assets/close-button.png";
+import closeButton from '../assets/close-button.png';
 
 class Notifications extends Component {
-  static defaultProps = {
-    notifications: []
-  };
+  constructor(props) {
+    super(props);
+    this.markAsRead = this.markAsRead.bind(this);
+  }
 
-  markAsRead = (id) => {
+  markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
-  };
+  }
 
   render() {
-    const { notifications } = this.props;
+    const { notifications = [] } = this.props;
 
     return (
       <div className='root-notifications'>
@@ -39,11 +40,10 @@ class Notifications extends Component {
             {notifications.map((notification) => (
               <NotificationItem
                 key={notification.id}
-                id={notification.id}
                 type={notification.type}
-                html={notification.html}
                 value={notification.value}
-                markAsRead={this.markAsRead}
+                html={notification.html}
+                markAsRead={() => this.markAsRead(notification.id)}
               />
             ))}
           </ul>
