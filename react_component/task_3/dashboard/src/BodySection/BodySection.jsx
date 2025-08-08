@@ -1,6 +1,5 @@
 import React from 'react';
 import './BodySection.css';
-import PropTypes from 'prop-types';
 
 function BodySection({ title, children }) {
   return (
@@ -10,10 +9,5 @@ function BodySection({ title, children }) {
     </div>
   );
 }
-
-BodySection.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node
-};
 
 export default BodySection;
