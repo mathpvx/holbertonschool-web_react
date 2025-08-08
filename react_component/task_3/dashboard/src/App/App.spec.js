@@ -1,41 +1,22 @@
-import App from './App.jsx'
+import App from './App.jsx';
 import { render, screen } from '@testing-library/react';
 
-test('Renders Notifications component', () => {
-    render(<App />);
-
-    const notification = screen.getByText(/notifications/i);
-
-    expect(notification).toBeInTheDocument();
+test('Renders Course list title when isLoggedIn is true', () => {
+  render(<App isLoggedIn={true} />);
+  const title = screen.getByText(/course list/i);
+  expect(title).toBeInTheDocument();
 });
 
-test('Renders Header component', () => {
-    render(<App />);
-
-    const header = screen.getByText(/school dashboard/i);
-
-    expect(header).toBeInTheDocument();
+test('Renders Log in to continue title when isLoggedIn is false', () => {
+  render(<App isLoggedIn={false} />);
+  const title = screen.getByText(/log in to continue/i);
+  expect(title).toBeInTheDocument();
 });
 
-test('Renders Login component', () => {
-    render(<App />);
-
-    const loginText = screen.getByText(/login to access the full dashboard/i);
-
-    expect(loginText).toBeInTheDocument();
+test('Renders News from the School section with paragraph', () => {
+  render(<App />);
+  const title = screen.getByText(/news from the school/i);
+  const paragraph = screen.getByText(/holberton school news goes here/i);
+  expect(title).toBeInTheDocument();
+  expect(paragraph).toBeInTheDocument();
 });
-
-test('Renders Footer component', () => {
-    render(<App />);
-
-    const footer = screen.getByText(/copyright/i);
-    
-    expect(footer).toBeInTheDocument();
-});
-
-
-
-
-
-
-
