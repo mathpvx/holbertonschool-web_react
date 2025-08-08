@@ -1,34 +1,6 @@
-import React, { Component, createRef } from 'react';
+import React, { Component, useRef, useEffect } from 'react';
 
 class NotificationItem extends Component {
-  constructor(props) {
-    super(props);
-    this.liRef = createRef();
-  }
-
-  componentDidMount() {
-    this.updateColor();
-  }
-
-  componentDidUpdate() {
-    this.updateColor();
-  }
-
-  updateColor() {
-    const { type = 'default' } = this.props;
-    const colors = {
-      urgent: 'red',
-      default: 'blue'
-    };
-    if (this.liRef.current) {
-      this.liRef.current.style.color = colors[type];
-      if (!this.liRef.current.style._values) {
-        this.liRef.current.style._values = {};
-      }
-      this.liRef.current.style._values.color = colors[type];
-    }
-  }
-
   containsHTML(str) {
     return typeof str === 'string' && /<\/?[a-z][\s\S]*>/i.test(str);
   }
@@ -39,7 +11,6 @@ class NotificationItem extends Component {
     if (html) {
       return (
         <li
-          ref={this.liRef}
           data-notification-type={type}
           dangerouslySetInnerHTML={html}
           onClick={markAsRead}
@@ -50,7 +21,6 @@ class NotificationItem extends Component {
     if (value && this.containsHTML(value)) {
       return (
         <li
-          ref={this.liRef}
           data-notification-type={type}
           dangerouslySetInnerHTML={{ __html: value }}
           onClick={markAsRead}
@@ -60,7 +30,6 @@ class NotificationItem extends Component {
 
     return (
       <li
-        ref={this.liRef}
         data-notification-type={type}
         onClick={markAsRead}
       >

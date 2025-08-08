@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import './Notifications.css';
 import NotificationItem from './NotificationItem';
-import closeButton from '../assets/close-button.png';
+import closeButton from "../assets/close-button.png";
 
 class Notifications extends Component {
-  constructor(props) {
-    super(props);
-    this.markAsRead = this.markAsRead.bind(this);
-  }
-
   markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
   }
