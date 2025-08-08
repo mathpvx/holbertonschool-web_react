@@ -1,0 +1,1 @@
+This is the Holberton School Project React Inline Styling

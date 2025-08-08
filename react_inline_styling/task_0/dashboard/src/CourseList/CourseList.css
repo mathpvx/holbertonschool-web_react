@@ -1,0 +1,33 @@
+#CourseList {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+#CourseList th, 
+#CourseList td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+#CourseList thead tr:first-child th {
+  text-align: center;
+  font-weight: bold;
+}
+
+#CourseList thead tr:nth-child(2) th {
+  text-align: center;
+  font-weight: bold;
+}
+
+#CourseList tbody td {
+  text-align: left;
+}
+
+#CourseList td.no-course {
+  text-align: center;
+  font-weight: bold;
+}
+
