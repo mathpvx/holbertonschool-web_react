@@ -1,0 +1,10 @@
+.App-body {
+  padding: 30px;
+  font-size: 1rem;
+}
+
+.App-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
