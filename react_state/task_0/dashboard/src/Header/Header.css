@@ -1,17 +1,14 @@
-.App-header {
+:root {
+  --main-color: #e01d3f;
+}
+
+.header {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
-  border-bottom: 3px solid #e1003c;
+  color: var(--main-color);
+  font-size: 20px;
 }
 
-.App-header img {
-  height: 200px;
-}
-
-.App-header h1 {
-  color: #e1003c;
-  margin-left: 20px;
-  font-weight: bold;
+.header img {
+  width: 200px;
 }

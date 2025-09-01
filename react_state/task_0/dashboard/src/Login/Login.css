@@ -1,10 +1,12 @@
-.App-body {
-  padding: 30px;
-  font-size: 1rem;
+:root {
+  --main-color: #e01d3f;
 }
 
-.App-form {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.login {
+  margin: 50px;
+  flex-grow: 1;
+}
+.login input {
+  margin-left: 10px;
+  margin-right: 20px;
 }
