@@ -6,7 +6,7 @@ import { StyleSheet, css } from 'aphrodite';
 import NotificationItem from '../NotificationItem/NotificationItem';
 
 // Assets.
-import closeButton from "../assets/close-button.png";
+import closeButton from "../../assets/close-button.png";
 
 const Notifications = memo(({
   notifications = [],
