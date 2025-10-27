@@ -1,51 +1,34 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { logout } from '../auth/authSlice';
+
+const API_BASE_URL = 'http://localhost:5173';
+const ENDPOINTS = {
+  courses: `${API_BASE_URL}/courses.json`,
+};
+
+export const fetchCourses = createAsyncThunk(
+  'courses/fetchCourses',
+  async () => {
+    const res = await fetch(ENDPOINTS.courses);
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  }
+);
 
 const initialState = {
-  list: [],
-  selected: {},
-  loading: false,
-  error: null,
+  courses: [],
 };
 
 const coursesSlice = createSlice({
   name: 'courses',
   initialState,
-  reducers: {
-    setCourses(state, action) {
-      state.list = action.payload || [];
-      const map = {};
-      state.list.forEach((c) => {
-        map[c.id] = Boolean(state.selected[c.id]);
-      });
-      state.selected = map;
-    },
-    selectCourse(state, action) {
-      const id = action.payload;
-      state.selected[id] = true;
-    },
-    unselectCourse(state, action) {
-      const id = action.payload;
-      state.selected[id] = false;
-    },
-    toggleSelectCourse(state, action) {
-      const id = action.payload;
-      state.selected[id] = !state.selected[id];
-    },
-    setLoading(state, action) {
-      state.loading = action.payload;
-    },
-    setError(state, action) {
-      state.error = action.payload;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchCourses.fulfilled, (state, action) => {
+      state.courses = action.payload;
+    });
+    builder.addCase(logout, () => initialState);
   },
 });
 
-export const {
-  setCourses,
-  selectCourse,
-  unselectCourse,
-  toggleSelectCourse,
-  setLoading,
-  setError,
-} = coursesSlice.actions;
 export default coursesSlice.reducer;
